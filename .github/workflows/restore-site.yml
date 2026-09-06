@@ -1,0 +1,103 @@
+name: Import website package
+on:
+  push:
+    branches: [main]
+    paths: ['.payload/READY']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: import-website
+  cancel-in-progress: false
+jobs:
+  import:
+    if: github.repository == 'sekl28/Treyolympus' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify and extract the supplied archive
+        shell: python
+        run: |
+          import base64, hashlib, io, json, pathlib, shutil, zipfile
+          root = pathlib.Path.cwd()
+          parts = [root / '.payload' / ('part-%02d' % i) for i in range(7)]
+          raw = base64.b64decode(''.join(p.read_text().strip() for p in parts), validate=True)
+          expected = 'aab72cff854905800923fd6d0a74764ba4c98c52294b7aa062450d553720a1fb'
+          assert hashlib.sha256(raw).hexdigest() == expected, 'Archive checksum mismatch; no files changed'
+          allowed = {'.gitattributes', '.github/workflows/check.yml', '.gitignore', '.nvmrc', '.vercelignore', '404.html', 'DEPLOY-RU.md', 'DEPLOY.sh', 'README.md', 'deployment-target.json', 'docs/QA-RU.md', 'docs/original/QA-RU.md', 'docs/original/README-RU.md', 'docs/test-results.json', 'index.html', 'package-lock.json', 'package.json', 'robots.txt', 'scripts/build.mjs', 'scripts/check.mjs', 'scripts/serve.mjs', 'vercel.json'}
+          with zipfile.ZipFile(io.BytesIO(raw)) as archive:
+              entries = {}
+              for item in archive.infolist():
+                  if item.is_dir():
+                      continue
+                  assert item.filename.startswith('treolympus/'), 'Unexpected archive root'
+                  rel = item.filename[len('treolympus/'):]
+                  assert rel in allowed and rel not in entries, 'Unexpected or duplicate path'
+                  assert item.file_size < 1000000, 'Unexpected file size'
+                  entries[rel] = archive.read(item)
+              assert set(entries) == allowed, 'Incomplete website package'
+              for rel, data in entries.items():
+                  if rel.startswith('.github/'):
+                      continue
+                  dest = root / rel
+                  dest.parent.mkdir(parents=True, exist_ok=True)
+                  dest.write_bytes(data)
+          target = root / 'deployment-target.json'
+          settings = json.loads(target.read_text())
+          settings['githubRepository'] = 'Treyolympus'
+          target.write_text(json.dumps(settings, ensure_ascii=False, indent=2) + '\n')
+          readme = '''# Treyolympus website
+
+          Source: Stake-Canada-Landing(1).zip. The original bilingual index.html is preserved byte for byte.
+
+          Repository: sekl28/Treyolympus. Intended existing Vercel project: treolympus (without y), project ID prj_WZScKM0jj65ZpCWMYN5Mi9DMlKxG, team anatolies-projects-f04770f5.
+
+          ## Build
+
+          ```sh
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run build
+          npm start
+          ```
+
+          Framework: Other. Root directory: repository root. Build command: npm run build. Output directory: dist. Node.js: 22.x. These build settings are recorded in vercel.json and package.json.
+
+          Only index.html, robots.txt and 404.html are copied to dist. Documentation and deployment scripts are not served.
+
+          ## Publication status
+
+          The website files have been imported into this repository. GitHub upload does not itself confirm a live Vercel deployment or a working domain. The existing Vercel project must be connected to this exact repository, with main as the production branch.
+
+          ## Checks
+
+          npm run build checks HTML, inline JavaScript syntax, JSON, local resources and the original affiliate link. docs/ contains the earlier package QA report; it is not a report about a deployed website.
+
+          The original review-mode noindex/nofollow settings are retained. No design, copy, affiliate URL, DNS settings or other projects are changed by this import.
+          '''
+          import textwrap
+          (root / 'README.md').write_text(textwrap.dedent(readme).replace('\n          ', '\n'), encoding='utf-8')
+          guide = root / 'DEPLOY-RU.md'
+          guide.write_text(guide.read_text().replace('sekl28/treolympus', 'sekl28/Treyolympus'), encoding='utf-8')
+          shutil.rmtree(root / '.payload')
+          print('Verified archive and extracted 21 site/config/documentation files.')
+          print('index.html SHA256:', hashlib.sha256((root / 'index.html').read_bytes()).hexdigest())
+      - name: Validate and build
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run build
+      - name: Commit site files without overwriting concurrent changes
+        run: |
+          git fetch origin main
+          test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA"
+          git config user.name 'sekl28'
+          git config user.email '217984951+sekl28@users.noreply.github.com'
+          git add -- .gitattributes .gitignore .nvmrc .vercelignore 404.html DEPLOY-RU.md DEPLOY.sh README.md deployment-target.json docs index.html package-lock.json package.json robots.txt scripts vercel.json
+          git add -A -- .payload
+          git commit -m 'Import complete website and Vercel build configuration'
+          git push origin HEAD:main
