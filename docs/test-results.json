@@ -1,0 +1,550 @@
+{
+  "date": "2026-09-06",
+  "target": "HTTP tests via Python; UI tests using uploaded HTML in memory, not browser URL navigation",
+  "checks": [
+    {
+      "name": "Home HTTP 200",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Security headers",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Noindex response header",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Unknown/private path returns 404: /not-a-real-page",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Unknown/private path returns 404: /README.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Unknown/private path returns 404: /deployment-target.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Unknown/private path returns 404: /package.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Unknown/private path returns 404: /docs/original/README-RU.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Unknown/private path returns 404: /.git/config",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Original index is byte-for-byte unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Meaningful page content",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "English default",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Landing event",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "No horizontal overflow en/320",
+      "passed": true,
+      "detail": {
+        "viewport": 320,
+        "document": 320
+      }
+    },
+    {
+      "name": "No horizontal overflow en/360",
+      "passed": true,
+      "detail": {
+        "viewport": 360,
+        "document": 360
+      }
+    },
+    {
+      "name": "No horizontal overflow en/375",
+      "passed": true,
+      "detail": {
+        "viewport": 375,
+        "document": 375
+      }
+    },
+    {
+      "name": "No horizontal overflow en/390",
+      "passed": true,
+      "detail": {
+        "viewport": 390,
+        "document": 390
+      }
+    },
+    {
+      "name": "No horizontal overflow en/430",
+      "passed": true,
+      "detail": {
+        "viewport": 430,
+        "document": 430
+      }
+    },
+    {
+      "name": "No horizontal overflow en/720",
+      "passed": true,
+      "detail": {
+        "viewport": 720,
+        "document": 720
+      }
+    },
+    {
+      "name": "No horizontal overflow en/768",
+      "passed": true,
+      "detail": {
+        "viewport": 768,
+        "document": 768
+      }
+    },
+    {
+      "name": "No horizontal overflow en/820",
+      "passed": true,
+      "detail": {
+        "viewport": 820,
+        "document": 820
+      }
+    },
+    {
+      "name": "No horizontal overflow en/1024",
+      "passed": true,
+      "detail": {
+        "viewport": 1024,
+        "document": 1024
+      }
+    },
+    {
+      "name": "No horizontal overflow en/1280",
+      "passed": true,
+      "detail": {
+        "viewport": 1280,
+        "document": 1280
+      }
+    },
+    {
+      "name": "No horizontal overflow en/1440",
+      "passed": true,
+      "detail": {
+        "viewport": 1440,
+        "document": 1440
+      }
+    },
+    {
+      "name": "No horizontal overflow en/1920",
+      "passed": true,
+      "detail": {
+        "viewport": 1920,
+        "document": 1920
+      }
+    },
+    {
+      "name": "No horizontal overflow fr/320",
+      "passed": true,
+      "detail": {
+        "viewport": 320,
+        "document": 320
+      }
+    },
+    {
+      "name": "No horizontal overflow fr/360",
+      "passed": true,
+      "detail": {
+        "viewport": 360,
+        "document": 360
+      }
+    },
+    {
+      "name": "No horizontal overflow fr/375",
+      "passed": true,
+      "detail": {
+        "viewport": 375,
+        "document": 375
+      }
+    },
+    {
+      "name": "No horizontal overflow fr/390",
+      "passed": true,
+      "detail": {
+        "viewport": 390,
+        "document": 390
+      }
+    },
+    {
+      "name": "No horizontal overflow fr/430",
+      "passed": true,
+      "detail": {
+        "viewport": 430,
+        "document": 430
+      }
+    },
+    {
+      "name": "No horizontal overflow fr/720",
+      "passed": true,
+      "detail": {
+        "viewport": 720,
+        "document": 720
+      }
+    },
+    {
+      "name": "No horizontal overflow fr/768",
+      "passed": true,
+      "detail": {
+        "viewport": 768,
+        "document": 768
+      }
+    },
+    {
+      "name": "No horizontal overflow fr/820",
+      "passed": true,
+      "detail": {
+        "viewport": 820,
+        "document": 820
+      }
+    },
+    {
+      "name": "No horizontal overflow fr/1024",
+      "passed": true,
+      "detail": {
+        "viewport": 1024,
+        "document": 1024
+      }
+    },
+    {
+      "name": "No horizontal overflow fr/1280",
+      "passed": true,
+      "detail": {
+        "viewport": 1280,
+        "document": 1280
+      }
+    },
+    {
+      "name": "No horizontal overflow fr/1440",
+      "passed": true,
+      "detail": {
+        "viewport": 1440,
+        "document": 1440
+      }
+    },
+    {
+      "name": "No horizontal overflow fr/1920",
+      "passed": true,
+      "detail": {
+        "viewport": 1920,
+        "document": 1920
+      }
+    },
+    {
+      "name": "Mobile menu opens",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Mobile menu closes after navigation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Mobile sticky CTA",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "VIP Platinum tab",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "VIP keyboard navigation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Eligibility dialog opens",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "No outbound URL by default",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Ontario blocked",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Other countries blocked",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Province change resets age confirmation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "No outbound before age confirmation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Correct fixed affiliate URL",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Outbound event generated",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Dialog closes with Escape",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Privacy dialog opens",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Privacy dialog closes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "FAQ disclosure opens",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "French language switch",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "No external resource requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "No JavaScript runtime errors",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "layout": [
+    {
+      "language": "en",
+      "width": 320,
+      "passed": true,
+      "viewport": 320,
+      "document": 320
+    },
+    {
+      "language": "en",
+      "width": 360,
+      "passed": true,
+      "viewport": 360,
+      "document": 360
+    },
+    {
+      "language": "en",
+      "width": 375,
+      "passed": true,
+      "viewport": 375,
+      "document": 375
+    },
+    {
+      "language": "en",
+      "width": 390,
+      "passed": true,
+      "viewport": 390,
+      "document": 390
+    },
+    {
+      "language": "en",
+      "width": 430,
+      "passed": true,
+      "viewport": 430,
+      "document": 430
+    },
+    {
+      "language": "en",
+      "width": 720,
+      "passed": true,
+      "viewport": 720,
+      "document": 720
+    },
+    {
+      "language": "en",
+      "width": 768,
+      "passed": true,
+      "viewport": 768,
+      "document": 768
+    },
+    {
+      "language": "en",
+      "width": 820,
+      "passed": true,
+      "viewport": 820,
+      "document": 820
+    },
+    {
+      "language": "en",
+      "width": 1024,
+      "passed": true,
+      "viewport": 1024,
+      "document": 1024
+    },
+    {
+      "language": "en",
+      "width": 1280,
+      "passed": true,
+      "viewport": 1280,
+      "document": 1280
+    },
+    {
+      "language": "en",
+      "width": 1440,
+      "passed": true,
+      "viewport": 1440,
+      "document": 1440
+    },
+    {
+      "language": "en",
+      "width": 1920,
+      "passed": true,
+      "viewport": 1920,
+      "document": 1920
+    },
+    {
+      "language": "fr",
+      "width": 320,
+      "passed": true,
+      "viewport": 320,
+      "document": 320
+    },
+    {
+      "language": "fr",
+      "width": 360,
+      "passed": true,
+      "viewport": 360,
+      "document": 360
+    },
+    {
+      "language": "fr",
+      "width": 375,
+      "passed": true,
+      "viewport": 375,
+      "document": 375
+    },
+    {
+      "language": "fr",
+      "width": 390,
+      "passed": true,
+      "viewport": 390,
+      "document": 390
+    },
+    {
+      "language": "fr",
+      "width": 430,
+      "passed": true,
+      "viewport": 430,
+      "document": 430
+    },
+    {
+      "language": "fr",
+      "width": 720,
+      "passed": true,
+      "viewport": 720,
+      "document": 720
+    },
+    {
+      "language": "fr",
+      "width": 768,
+      "passed": true,
+      "viewport": 768,
+      "document": 768
+    },
+    {
+      "language": "fr",
+      "width": 820,
+      "passed": true,
+      "viewport": 820,
+      "document": 820
+    },
+    {
+      "language": "fr",
+      "width": 1024,
+      "passed": true,
+      "viewport": 1024,
+      "document": 1024
+    },
+    {
+      "language": "fr",
+      "width": 1280,
+      "passed": true,
+      "viewport": 1280,
+      "document": 1280
+    },
+    {
+      "language": "fr",
+      "width": 1440,
+      "passed": true,
+      "viewport": 1440,
+      "document": 1440
+    },
+    {
+      "language": "fr",
+      "width": 1920,
+      "passed": true,
+      "viewport": 1920,
+      "document": 1920
+    }
+  ],
+  "screenshots": [
+    "desktop.png",
+    "mobile.png"
+  ],
+  "passed": true,
+  "browser_http_navigation": "Blocked by Chromium administrator policy: net::ERR_BLOCKED_BY_ADMINISTRATOR. Browser UI tests used the uploaded self-contained HTML in memory, without accessing the blocked address.",
+  "not_tested": [
+    "GitHub remote push and Actions execution",
+    "Vercel deployment",
+    "Production domain HTTPS/DNS",
+    "Language persistence after HTTP reload",
+    "UTM query on an HTTP-served page",
+    "Partner-account attribution",
+    "Real iPhone device",
+    "IP geoblocking and legal acceptance"
+  ]
+}

@@ -1,27 +1,10 @@
-# treolympus — комплект сайта для GitHub и Vercel
+# Treyolympus website
 
-Исходник: `Stake-Canada-Landing(1).zip`. Главная страница `index.html` сохранена побайтно: дизайн, тексты, языки и партнёрская ссылка не переписывались.
+Source: Stake-Canada-Landing(1).zip. The original bilingual index.html is preserved byte for byte.
 
-## Состояние этой поставки
+Repository: sekl28/Treyolympus. Intended existing Vercel project: treolympus (without y), project ID prj_WZScKM0jj65ZpCWMYN5Mi9DMlKxG, team anatolies-projects-f04770f5.
 
-**Проект подготовлен для репозитория `sekl28/Treyolympus` и существующего проекта Vercel `treolympus`.**
-
-Целевой проект Vercel — `treolympus`, не `treyolympus`. Идентификаторы из ранее проверенного кабинета записаны в `deployment-target.json`; это настройки назначения, а не подтверждение текущего доступа. GitHub-репозиторий: `sekl28/Treyolympus`.
-
-## Содержимое
-
-- `index.html` — исходный самодостаточный сайт EN/FR.
-- `404.html`, `robots.txt` — публичные вспомогательные файлы.
-- `vercel.json` — явная конфигурация сборки и HTTP-заголовки.
-- `package.json`, `package-lock.json`, `.nvmrc` — воспроизводимая сборка на Node.js 22, без зависимостей приложения.
-- `scripts/check.mjs`, `build.mjs`, `serve.mjs` — проверки, сборка и локальный HTTP-просмотр.
-- `.github/workflows/check.yml` — конфигурация проверки в GitHub Actions.
-- `.gitignore`, `.vercelignore`, `.gitattributes` — исключения и нормализация файлов.
-- `DEPLOY.sh`, `DEPLOY-RU.md` — сценарий публикации с проверкой аккаунта и точного проекта.
-- `docs/QA-RU.md`, `docs/test-results.json` — фактические результаты проверки.
-- `docs/original/` — исходная документация из архива.
-
-## Локальная сборка
+## Build
 
 ```sh
 npm ci --ignore-scripts --no-audit --no-fund
@@ -29,8 +12,16 @@ npm run build
 npm start
 ```
 
-Адрес локального сервера: `http://127.0.0.1:3000`. В `dist/` копируются только `index.html`, `robots.txt`, `404.html`.
+Framework: Other. Root directory: repository root. Build command: npm run build. Output directory: dist. Node.js: 22.x. These build settings are recorded in vercel.json and package.json.
 
-## Vercel
+Only index.html, robots.txt and 404.html are copied to dist. Documentation and deployment scripts are not served.
 
-Используется корень репозитория (`./`). Остальные параметры зафиксированы в `vercel.json`: Framework = Other; Build Command = `npm run build`; Output Directory = `dist`.
+## Publication status
+
+The website files have been imported into this repository. GitHub upload does not itself confirm a live Vercel deployment or a working domain. The existing Vercel project must be connected to this exact repository, with main as the production branch.
+
+## Checks
+
+npm run build checks HTML, inline JavaScript syntax, JSON, local resources and the original affiliate link. docs/ contains the earlier package QA report; it is not a report about a deployed website.
+
+The original review-mode noindex/nofollow settings are retained. No design, copy, affiliate URL, DNS settings or other projects are changed by this import.

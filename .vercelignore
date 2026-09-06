@@ -1,0 +1,17 @@
+.git/
+.github/
+.vercel/
+node_modules/
+dist/
+docs/
+README.md
+DEPLOY-RU.md
+DEPLOY.sh
+deployment-target.json
+*.zip
+*.bundle
+*.log
+.env*
+.DS_Store
+test-results/
+playwright-report/
